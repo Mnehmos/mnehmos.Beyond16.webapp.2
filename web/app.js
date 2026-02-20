@@ -1,5 +1,18 @@
 const config = window.__APP_CONFIG__ || { apiBaseUrl: "http://localhost:3000" };
 
+function normalizeApiBaseUrl(url) {
+  return String(url || "").replace(/\/+$/, "");
+}
+
+function buildApiUrl(baseUrl, path) {
+  const normalizedBaseUrl = normalizeApiBaseUrl(baseUrl);
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${normalizedBaseUrl}${normalizedPath}`;
+}
+
+const apiBaseUrl = normalizeApiBaseUrl(config.apiBaseUrl);
+const chatEndpoint = buildApiUrl(apiBaseUrl, "/chat");
+
 const state = {
   turn: 0,
   axes: { EI: 0, SN: 0, TF: 0, JP: 0 },
@@ -20,6 +33,7 @@ function addMessage(role, text) {
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
+addMessage("assistant", `System: using API ${apiBaseUrl}`);
 addMessage("assistant", "Welcome. Share a quick intro about how you make decisions.");
 
 chatForm.addEventListener("submit", async (event) => {
@@ -31,7 +45,7 @@ chatForm.addEventListener("submit", async (event) => {
   messageInput.value = "";
 
   try {
-    const res = await fetch(`${config.apiBaseUrl}/chat`, {
+    const res = await fetch(chatEndpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
