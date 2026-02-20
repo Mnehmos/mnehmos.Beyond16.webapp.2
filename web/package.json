@@ -1,0 +1,13 @@
+{
+  "name": "@mbti/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "build": "node -e \"console.log('web build: static assets only')\"",
+    "test": "node -e \"console.log('web test: none')\"",
+    "typecheck": "node -e \"console.log('web typecheck: none')\"",
+    "start": "node dev-server.js"
+  }
+}

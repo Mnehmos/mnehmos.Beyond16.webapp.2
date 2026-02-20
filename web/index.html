@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MBTI Generative Quiz</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>MBTI Generative Quiz</h1>
+        <p>Answer naturally. The quiz updates EI/SN/TF/JP gradients each turn.</p>
+      </header>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
+
+      <form id="chatForm" class="chat-form">
+        <input id="messageInput" name="message" placeholder="Type your answer..." required maxlength="500" />
+        <button type="submit">Send</button>
+      </form>
+
+      <section class="status">
+        <div><strong>Phase:</strong> <span id="phase">intro</span></div>
+        <div><strong>Progress:</strong> <span id="progress">0%</span></div>
+        <div><strong>Result:</strong> <span id="result">-</span></div>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

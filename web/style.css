@@ -1,0 +1,95 @@
+:root {
+  --bg: #f2efe8;
+  --panel: #fffaf0;
+  --text: #1f2937;
+  --accent: #136f63;
+  --accent-2: #f4a259;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top right, #f9e9d2 0%, var(--bg) 55%);
+}
+
+.app {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+header {
+  background: var(--panel);
+  border: 1px solid #e5dccf;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.messages {
+  background: #fff;
+  border: 1px solid #e2ddd2;
+  border-radius: 12px;
+  padding: 0.75rem;
+  overflow-y: auto;
+  min-height: 300px;
+}
+
+.msg {
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  max-width: 85%;
+}
+
+.msg.user {
+  margin-left: auto;
+  background: #d7ece8;
+}
+
+.msg.assistant {
+  background: #f8efe3;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+input,
+button {
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #c8c0b5;
+  font: inherit;
+}
+
+button {
+  background: linear-gradient(135deg, var(--accent), #0f4f47);
+  color: #fff;
+  border: none;
+}
+
+.status {
+  background: var(--panel);
+  border: 1px solid #e5dccf;
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .chat-form {
+    grid-template-columns: 1fr;
+  }
+}
